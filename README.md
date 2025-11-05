@@ -14,7 +14,7 @@ A library of statistics algorithms for final project
    **SaltPlotSmoother(JAVA):**
   
         Program that creates, salts and then smooths data using my own methods and implementations
-     
+
    **SaltPlotSmootherAPI(JAVA):**
 
         Program that creates, salts and then smooths data using my own methods
@@ -31,6 +31,32 @@ A library of statistics algorithms for final project
    **SaltPlotSmoother(Octave):**
 
         Program that creates, salts and then smooths data Ocatves built in methods in Octave
+
+
+<p align="center">
+  <img src="Example%20Output/GUI.png" alt="Salted Image" width="600">
+  <br>
+  <em>Figure 1. Option GUI for API </em>
+</p>
+
+
+<p align="center">
+  <img src="Example%20Output/Standard Quadratic API.png" alt="Salted Image" width="600">
+  <br>
+  <em>Figure 2. Quadratic Graph </em>
+</p>
+
+<p align="center">
+  <img src="Example%20Output/Salted Quadratic API.png" alt="Salted Image" width="600">
+  <br>
+  <em>Figure 3. Salted Quadratic Graph (before smoothing)</em>
+</p>
+<p align="center">
+  <img src="Example%20Output/Smoothed Quadratic API.png" alt="Salted Image" width="600">
+  <br>
+  <em>Figure 4. Smoothed Quadratic Graph</em>
+</p>
+
 
 
 # Non-Programs
