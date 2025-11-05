@@ -100,71 +100,34 @@ public class SaltPlotSmoother
         ArrayList<Double> smoothedList = new ArrayList<>();
         cleanedList = SpsL.csvCleaner(pathname);
         double total = 0;
-        boolean flag = false;
         int tempSteps = 0;
 
-        for(int k = 0; k < grit; k++)
+        for (int k = 0; k < grit; k++)
         {
-            for(int i = 0; i < cleanedList.size(); i++)
+            for (int i = 0; i < cleanedList.size(); i++)
             {
-
-                    if(i == 0)     //Case at the beginning of the loop, will only scan right for average
+                for (int j = -smoothingSteps; j <= smoothingSteps; j++)
+                {
+                    int idx = i + j;
+                    if (idx >= 0 && idx < cleanedList.size())
                     {
-                        for(int j = 0; j < smoothingSteps; j++)
-                        {
-                            total += cleanedList.get(i+j);
-                            tempSteps++;
-
-                        }
-                        flag = true;
-
+                        total += cleanedList.get(idx);
+                        tempSteps++;
                     }
-                    else if(i == cleanedList.size()-1)//Case at the UpperBound of the loop, will only scan to the left for average
-                    {
-                        for(int j = smoothingSteps; j > 0; j--)
-                        {
-                            total += cleanedList.get(i-j);
-                            tempSteps++;
+                }
 
-                        }
-                        flag = true;
-                    }
-                    if (!flag)        //If neither case occurs, will scan left and right for the average
-                    {
-                        try
-                        {
-                            for(int j = 0; j < smoothingSteps; j++)
-                            {
-                                total += cleanedList.get(i+j);
-                                tempSteps++;
-                            }
-                        }
-                        catch (Exception e) {}
-                        try
-                        {
-                            for(int j = smoothingSteps+1; j > 0; j--)
-                            {
-                                total += cleanedList.get(i-j);
-                                tempSteps++;
-                            }
-
-                        }
-                        catch (Exception e) {}
-
-                    }
-                smoothedList.add(total/tempSteps);
-                tempSteps = 0;
+                smoothedList.add(total / tempSteps);
                 total = 0;
-                flag = false;
+                tempSteps = 0;
             }
+
             cleanedList.clear();
             cleanedList.addAll(smoothedList);
-            if(k != grit -1)
+            if (k != grit - 1)
             {
                 smoothedList.clear();
             }
         }
         SpsL.csvCreator(lowerBound, UpperBound, smoothedList, "Smoothed Quadratic.csv");
-
     }
 }
